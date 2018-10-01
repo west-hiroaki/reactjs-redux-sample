@@ -1,0 +1,18 @@
+parser: 'babel-eslint'
+plugins:
+- react
+- prettier
+extends:
+- google
+- plugin:react/recommended
+- prettier
+- prettier/react
+rules:
+  prettier/prettier:
+  - 2
+  -
+    trailingComma: none
+    singleQuote: true
+    semi: false
+  react/jsx-uses-vars:
+  - 1
