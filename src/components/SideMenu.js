@@ -22,11 +22,14 @@ const SideMenu = props => {
     <Drawer variant="permanent" classes={{ paper: classes.drawerPaper }}>
       <div className={classes.toolbar} />
       <List>
-        <ListItem button key="home" component={Link} to="/">
+        <ListItem button key="root" component={Link} to="/">
           <ListItemText primary="Home(ルートURL)" />
         </ListItem>
         <ListItem button key="home" component={Link} to="/home">
           <ListItemText primary="Home(違うURL)" />
+        </ListItem>
+        <ListItem button key="switch_sample" component={Link} to="/sample/switch">
+          <ListItemText primary="Switch サンプル" />
         </ListItem>
       </List>
     </Drawer>

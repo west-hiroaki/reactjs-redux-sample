@@ -6,6 +6,7 @@ import MessageBar from './MessageBar'
 import Header from '../components/Header'
 import Home from '../components/Home'
 import SideMenu from '../components/SideMenu'
+import SwitchSample from './sample/Switch'
 
 const styles = theme => ({
   content: {
@@ -28,6 +29,7 @@ const Router = props => {
         <ReachRouter>
           <Home path="/" />
           <Home path="/home" />
+          <SwitchSample path="/sample/switch" />
         </ReachRouter>
       </main>
     </div>
