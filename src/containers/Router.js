@@ -2,10 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { Router as ReachRouter } from '@reach/router'
-import MessageBar from './MessageBar'
+
 import Header from '../components/Header'
 import Home from '../components/Home'
 import SideMenu from '../components/SideMenu'
+
+import MessageBar from './MessageBar'
+import ButtonSample from './sample/Button'
 import SwitchSample from './sample/Switch'
 
 const styles = theme => ({
@@ -30,6 +33,7 @@ const Router = props => {
           <Home path="/" />
           <Home path="/home" />
           <SwitchSample path="/sample/switch" />
+          <ButtonSample path="/sample/button" />
         </ReachRouter>
       </main>
     </div>
