@@ -9,6 +9,7 @@ import SideMenu from '../components/SideMenu'
 
 import MessageBar from './MessageBar'
 import ButtonSample from './sample/Button'
+import LinkSample from './sample/Link'
 import SwitchSample from './sample/Switch'
 
 const styles = theme => ({
@@ -34,6 +35,7 @@ const Router = props => {
           <Home path="/home" />
           <SwitchSample path="/sample/switch" />
           <ButtonSample path="/sample/button" />
+          <LinkSample path="/sample/link" />
         </ReachRouter>
       </main>
     </div>
