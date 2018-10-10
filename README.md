@@ -1,6 +1,6 @@
 # reactjs-redux-sample
 
-  [ReactJS](https://reactjs.org/) と [Redux](https://redux.js.org/) を使用した、簡単な動作環境を作成します。
+  [ReactJS](https://reactjs.org/) と [Redux](https://redux.js.org/) を使用した、簡単な動作環境とサンプルを作成します。
 
   * [Node.js](https://nodejs.org/ja/)
     * ver 8.11.3  
@@ -8,9 +8,15 @@
     * ver 4.12.0
   * [Babel](https://babeljs.io/)
     * ver 6.23.0
-    * Node.js で ES6 をコンパイルするため
+    * Node.js で ES6 をコンパイルする
   * [ESLint](https://eslint.org/)
     * ver 4.19.1
+    * コーディングルール
+  * [Prettier](https://github.com/prettier/prettier)
+    * ver 1.13.5
+    * コーディングフォーマッタ（`eslint --fix` よりも優れている）
+    * 読み方は `プリティア`
+    * [prettir-eslint](https://github.com/prettier/prettier-eslint)を使って、prettier で整形した結果を ESlint に渡す。
 
 ## 前提条件
 
@@ -26,7 +32,7 @@
       $ source ~/.bash_profile
       ```
 
-## 動作確認手順
+## サンプルの動作確認手順
 
   1. Node.jsのインストール  
     [asdf](https://github.com/asdf-vm/asdf)を使用してインストールします。  
@@ -52,6 +58,13 @@
   4. ローカルのブラウザで [`http://localhost:8888/`](http://localhost:8888/) にアクセス。  
     ページが表示されればOK。
 
+## ESlint実行コマンド
+
+  `package.json` に短縮コマンドを記述してあるので、以下コマンドで実行可能。
+
+  ```bash
+  $ npm run lint
+  ```
 
 ## Reduxの処理の流れメモ
 

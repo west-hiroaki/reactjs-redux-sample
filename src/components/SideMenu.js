@@ -28,18 +28,23 @@ const SideMenu = props => {
         <ListItem button key="home" component={Link} to="/home">
           <ListItemText primary="Home(違うURL)" />
         </ListItem>
-        <ListItem button key="switch_sample" component={Link} to="/sample/switch">
+        <ListItem
+          button
+          key="switch_sample"
+          component={Link}
+          to="/sample/switch"
+        >
           <ListItemText primary="Switch サンプル" />
-        </ListItem>
-        <ListItem button key="button_sample" component={Link} to="/sample/button">
-          <ListItemText primary="Button サンプル" />
         </ListItem>
         <ListItem
           button
-          key="link_sample"
+          key="button_sample"
           component={Link}
-          to="/sample/link"
+          to="/sample/button"
         >
+          <ListItemText primary="Button サンプル" />
+        </ListItem>
+        <ListItem button key="link_sample" component={Link} to="/sample/link">
           <ListItemText primary="Link サンプル" />
         </ListItem>
       </List>

@@ -1,18 +1,20 @@
 parser: 'babel-eslint'
 plugins:
-- react
-- prettier
+  - react
+  - prettier
 extends:
-- google
-- plugin:react/recommended
-- prettier
-- prettier/react
+  - google
+  - plugin:react/recommended
+  - prettier
+  - prettier/react
+settings:
+  react:
+    version: "^16.4.0"
 rules:
   prettier/prettier:
-  - 2
-  -
-    trailingComma: none
-    singleQuote: true
-    semi: false
+    - error
+    - trailingComma: none   # 最後の,を省略
+      singleQuote: true     # 文字列はシングルクォーテーション
+      semi: false           # ;省略
   react/jsx-uses-vars:
-  - 1
+    - 1
