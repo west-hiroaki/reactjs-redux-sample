@@ -1,6 +1,4 @@
-import {
-  showMessage
-} from '../index'
+import { showMessage } from '../index'
 
 /** Action Types */
 export const FETCH_SWITCH_SAMPLE_STATUS = 'FETCH_SWITCH_SAMPLE_STATUS'
@@ -16,7 +14,7 @@ export const REQUEST_SWITCH_SAMPLE_DISABLE = 'REQUEST_SWITCH_SAMPLE_DISABLE'
  */
 export async function fetchSwitchSampleStatus() {
   try {
-    var result = true;  // 本当はここで現在保存されている値を取得してくるイメージ
+    let result = true // 本当はここで現在保存されている値を取得してくるイメージ
 
     return {
       type: FETCH_SWITCH_SAMPLE_STATUS,

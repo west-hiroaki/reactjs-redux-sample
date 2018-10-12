@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import FormGroup from '@material-ui/core/FormGroup'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table'
@@ -10,7 +8,6 @@ import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
-import { Link } from '@reach/router'
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -42,6 +39,9 @@ const TableSample = props => {
                 <TableRow
                   key={index}
                   hover
+                  onClick={event =>
+                    handleRowClick(event, row.category_name, row.master_name)
+                  }
                 >
                   <TableCell>{row.category_name}</TableCell>
                   <TableCell>{row.master_name}</TableCell>

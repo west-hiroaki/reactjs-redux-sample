@@ -3,12 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import NormalButtonComponent from '../../components/sample/button/NormalButton'
 import SubmitButtonComponent from '../../components/sample/button/SubmitButton'
-import {
-  showMessage,
-} from '../../actions/index'
-import {
-  buttonClickCountUp
-} from '../../actions/sample/Button'
+import { showMessage } from '../../actions/index'
+import { buttonClickCountUp } from '../../actions/sample/Button'
 
 /**
  * ボタンの状態を管理をするContainer
@@ -27,41 +23,52 @@ class ButtonSample extends React.Component {
    * これは自作関数（この関数が自作関数であることを分かりやすくするため、名前に強引に SelfMade を付けています）
    * @param {Object} event ボタンに渡されるイベント
    */
-  async handleClick_SelfMade(event) {
-    var name = event.currentTarget.getAttribute('data-name')
+  async handleClickSelfMade(event) {
+    let name = event.currentTarget.getAttribute('data-name')
 
     // ボタンクリック回数カウントアップアクション発動
     // そして終わるまで待つ（awaitを付けているので）
     this.props.dispatch(await buttonClickCountUp())
 
     // メッセージ表示
-    var msg = `[ ${name} ] button click! counter=${this.props.counter}`
+    let msg = `[ ${name} ] button click! counter=${this.props.counter}`
     this.props.dispatch(showMessage(msg))
   }
 
   /**
    * ここで描画する
-   * かつ、コンポーネントの `handleClick_SelfMade` に関数を割り当てる
+   * かつ、コンポーネントの `handleClickSelfMade` に関数を割り当てる
    * @return {Object} ボタンコンポーネント
    */
   render() {
     return (
       <div>
-        <div>ボタンを押すと、カウントアップされていくサンプル（カウントは全ボタンで共有）</div>
-        <div>今のカウント：{this.props.counter}</div>
-        <div>ボタンの各要素は <a href="https://material-ui.com/api/button/">https://material-ui.com/api/button/</a> を参照</div>
+        <div>
+          ボタンを押すと、カウントアップされていくサンプル（カウントは全ボタンで共有）
+        </div>
+        <div>
+          今のカウント：
+          {this.props.counter}
+        </div>
+        <div>
+          ボタンの各要素は{' '}
+          <a href="https://material-ui.com/api/button/">
+            https://material-ui.com/api/button/
+          </a>{' '}
+          を参照
+        </div>
 
         <SubmitButtonComponent
-          name='button1'
-          handleClick_SelfMade={(event) => this.handleClick_SelfMade(event)}
+          name="button1"
+          handleClickSelfMade={event => this.handleClickSelfMade(event)}
         />
         <SubmitButtonComponent
-          name='button2'
-          handleClick_SelfMade={(event) => this.handleClick_SelfMade(event)}
+          name="button2"
+          handleClickSelfMade={event => this.handleClickSelfMade(event)}
         />
         <NormalButtonComponent
-          name='button3'
-          handleClick_SelfMade={(event) => this.handleClick_SelfMade(event)}
+          name="button3"
+          handleClickSelfMade={event => this.handleClickSelfMade(event)}
         />
       </div>
     )

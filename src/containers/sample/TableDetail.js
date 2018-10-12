@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { navigate } from '@reach/router'
 import { connect } from 'react-redux'
 import { Link } from '@reach/router'
 import { showMessage } from '../../actions/index'
@@ -32,6 +31,7 @@ class TableDetailSample extends React.Component {
 
   /**
    * ここで描画する
+   * @return {Object} 描画対象コンポーネント
    */
   render() {
     return (
@@ -59,7 +59,9 @@ function mapStateToProps(state) {
 }
 
 TableDetailSample.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  category: PropTypes.string.isRequired,
+  masterName: PropTypes.string.isRequired
 }
 
 export default connect(mapStateToProps)(TableDetailSample)

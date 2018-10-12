@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import FormGroup from '@material-ui/core/FormGroup'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table'
@@ -12,7 +10,6 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import TableSortLabel from '@material-ui/core/TableSortLabel'
 import Tooltip from '@material-ui/core/Tooltip'
-import { Link } from '@reach/router'
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -32,6 +29,11 @@ const titles = [
   { id: 'master_name', numeric: false, disablePadding: false, label: 'マスタ' }
 ]
 
+/**
+ * @param {array} array
+ * @param {number} cmp
+ * @return {array}
+ */
 function stableSort(array, cmp) {
   const stabilizedThis = array.map((el, index) => [el, index])
   stabilizedThis.sort((a, b) => {
@@ -42,6 +44,12 @@ function stableSort(array, cmp) {
   return stabilizedThis.map(el => el[0])
 }
 
+/**
+ * @param {Object} a
+ * @param {Object} b
+ * @param {string} orderBy
+ * @return {number}
+ */
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1
@@ -52,6 +60,11 @@ function desc(a, b, orderBy) {
   return 0
 }
 
+/**
+ * @param {string} order
+ * @param {string} orderBy
+ * @return {number}
+ */
 function getSorting(order, orderBy) {
   return order === 'desc'
     ? (a, b) => desc(a, b, orderBy)
@@ -92,7 +105,7 @@ const TableSample = props => {
                     </Tooltip>
                   </TableCell>
                 )
-              }, this)}
+              })}
             </TableRow>
           </TableHead>
           <TableBody>

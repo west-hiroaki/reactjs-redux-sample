@@ -1,7 +1,3 @@
-import {
-  showMessage
-} from '../index'
-
 /** Action Types */
 export const BUTTON_CLICK_COUNT_UP = 'BUTTON_CLICK_COUNT_UP'
 
@@ -10,7 +6,7 @@ export const BUTTON_CLICK_COUNT_UP = 'BUTTON_CLICK_COUNT_UP'
  * @return {Object} action
  */
 export async function buttonClickCountUp() {
-    return {
-      type: BUTTON_CLICK_COUNT_UP
-    }
+  return {
+    type: BUTTON_CLICK_COUNT_UP
+  }
 }

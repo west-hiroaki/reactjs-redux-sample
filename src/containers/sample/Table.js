@@ -31,17 +31,20 @@ class TableSample extends React.Component {
    * リンククリック用のコールバック関数
    * これは自作関数（この関数が自作関数であることを分かりやすくするため、名前に強引に SelfMade を付けています）
    * @param {Object} event ボタンに渡されるイベント
+   * @param {string} category カテゴリ名
+   * @param {string} masterName マスタ名
    */
-  async handleRowClick_SelfMade(event, category, masterName) {
+  async handleRowClickSelfMade(event, category, masterName) {
     navigate(`/sample/table/${category}/${masterName}`)
   }
 
   /**
-   * リンククリック用のコールバック関数
+   * 列ヘッダのソートクリック用のコールバック関数
    * これは自作関数（この関数が自作関数であることを分かりやすくするため、名前に強引に SelfMade を付けています）
    * @param {Object} event ボタンに渡されるイベント
+   * @param {string} property ソート対象ヘッダ文字列
    */
-  async onSortHandler_SelfMade(event, property) {
+  async onSortHandlerSelfMade(event, property) {
     const orderBy = property
     let order = 'desc'
 
@@ -56,6 +59,7 @@ class TableSample extends React.Component {
 
   /**
    * ここで描画する
+   * @return {Object} 描画対象コンポーネント
    */
   render() {
     return (
@@ -72,14 +76,14 @@ class TableSample extends React.Component {
 
         <NormalTableSampleComponent
           handleRowClick={(event, category, masterName) =>
-            this.handleRowClick_SelfMade(event, category, masterName)
+            this.handleRowClickSelfMade(event, category, masterName)
           }
           rows={this.props.rows}
         />
 
         <SortTableSampleComponent
           onRequestSort={(event, property) =>
-            this.onSortHandler_SelfMade(event, property)
+            this.onSortHandlerSelfMade(event, property)
           }
           rows={this.props.rows}
           order={this.props.order}
@@ -114,8 +118,6 @@ function mapStateToProps(state) {
     }
   ]
 
-  const aaa_bbb = 1
-
   return {
     rows: rows,
     order: state.TableSortStatus.order,
@@ -125,7 +127,9 @@ function mapStateToProps(state) {
 
 TableSample.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  rows: PropTypes.array.isRequired
+  rows: PropTypes.array.isRequired,
+  order: PropTypes.string.isRequired,
+  orderBy: PropTypes.string.isRequired
 }
 
 export default connect(mapStateToProps)(TableSample)

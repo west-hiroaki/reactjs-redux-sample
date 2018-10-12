@@ -1,6 +1,4 @@
-import {
-  BUTTON_CLICK_COUNT_UP,
-} from '../../actions/sample/Button'
+import { BUTTON_CLICK_COUNT_UP } from '../../actions/sample/Button'
 
 // 初期状態
 const initialState = {
@@ -20,7 +18,7 @@ export default function(state = initialState, action) {
       // カウントアップ
       return {
         ...state,
-        counter: state.counter += 1
+        counter: (state.counter += 1)
       }
     default:
       return state

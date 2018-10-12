@@ -6,19 +6,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button'
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing.unit
   },
   input: {
-    display: 'none',
-  },
-});
+    display: 'none'
+  }
+})
 
 const ButtonSample = props => {
-  const { name, handleClick_SelfMade } = props
+  const { name, handleClickSelfMade } = props
   return (
     <span>
       <Button
@@ -26,15 +26,17 @@ const ButtonSample = props => {
         variant="raised"
         color="primary"
         size="large"
-        onClick={handleClick_SelfMade}
-      >{name}</Button>
+        onClick={handleClickSelfMade}
+      >
+        {name}
+      </Button>
     </span>
   )
 }
 
 ButtonSample.propTypes = {
   name: PropTypes.string.isRequired,
-  handleClick_SelfMade: PropTypes.func.isRequired
+  handleClickSelfMade: PropTypes.func.isRequired
 }
 
 export default withStyles(styles)(ButtonSample)
