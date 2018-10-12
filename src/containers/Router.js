@@ -7,10 +7,12 @@ import Header from '../components/Header'
 import Home from '../components/Home'
 import SideMenu from '../components/SideMenu'
 
-import MessageBar from './MessageBar'
 import ButtonSample from './sample/Button'
 import LinkSample from './sample/Link'
+import MessageBar from './MessageBar'
 import SwitchSample from './sample/Switch'
+import TableDetailSample from './sample/TableDetail'
+import TableSample from './sample/Table'
 
 const styles = theme => ({
   content: {
@@ -36,6 +38,8 @@ const Router = props => {
           <SwitchSample path="/sample/switch" />
           <ButtonSample path="/sample/button" />
           <LinkSample path="/sample/link" />
+          <TableSample path="/sample/table" />
+          <TableDetailSample path="/sample/table/:category/:masterName" />
         </ReachRouter>
       </main>
     </div>

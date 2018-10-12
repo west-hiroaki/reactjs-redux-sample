@@ -2,9 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import SwitchSampleComponent from '../../components/sample/Switch'
-import {
-  showMessage,
-} from '../../actions/index'
+import { showMessage } from '../../actions/index'
 import {
   fetchSwitchSampleStatus,
   requestSwitchSampleEnable,

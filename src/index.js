@@ -2,7 +2,6 @@
  * エントリポイント：ルートになるjs。
  * webpack.config.js の entry に記述されている。
  */
-import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
