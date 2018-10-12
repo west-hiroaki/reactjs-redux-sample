@@ -42,7 +42,7 @@ class TableSample extends React.Component {
    * 列ヘッダのソートクリック用のコールバック関数
    * これは自作関数（この関数が自作関数であることを分かりやすくするため、名前に強引に SelfMade を付けています）
    * @param {Object} event ボタンに渡されるイベント
-   * @param {string} property ソート対象ヘッダ文字列
+   * @param {string} property ソート対象ヘッダ文字列（このサンプルの場合、'category_name' or 'master_name'）
    */
   async onSortHandlerSelfMade(event, property) {
     const orderBy = property
@@ -85,6 +85,7 @@ class TableSample extends React.Component {
           onRequestSort={(event, property) =>
             this.onSortHandlerSelfMade(event, property)
           }
+          columns={this.props.columns}
           rows={this.props.rows}
           order={this.props.order}
           orderBy={this.props.orderBy}
@@ -99,6 +100,21 @@ class TableSample extends React.Component {
  * @return {Object} props Props
  */
 function mapStateToProps(state) {
+  const columns = [
+    {
+      id: 'category_name',
+      numeric: false,
+      disablePadding: false,
+      label: 'カテゴリ'
+    },
+    {
+      id: 'master_name',
+      numeric: false,
+      disablePadding: false,
+      label: 'マスタ'
+    }
+  ]
+
   const rows = [
     {
       category_name: 'category1',
@@ -119,6 +135,7 @@ function mapStateToProps(state) {
   ]
 
   return {
+    columns: columns,
     rows: rows,
     order: state.TableSortStatus.order,
     orderBy: state.TableSortStatus.orderBy
@@ -127,6 +144,7 @@ function mapStateToProps(state) {
 
 TableSample.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  columns: PropTypes.array.isRequired,
   rows: PropTypes.array.isRequired,
   order: PropTypes.string.isRequired,
   orderBy: PropTypes.string.isRequired

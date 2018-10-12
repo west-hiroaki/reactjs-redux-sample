@@ -19,19 +19,9 @@ const styles = theme => ({
   })
 })
 
-const titles = [
-  {
-    id: 'category_name',
-    numeric: false,
-    disablePadding: false,
-    label: 'カテゴリ'
-  },
-  { id: 'master_name', numeric: false, disablePadding: false, label: 'マスタ' }
-]
-
 /**
  * @param {array} array
- * @param {number} cmp
+ * @param {func} cmp ソート比較を行う関数
  * @return {array}
  */
 function stableSort(array, cmp) {
@@ -47,7 +37,7 @@ function stableSort(array, cmp) {
 /**
  * @param {Object} a
  * @param {Object} b
- * @param {string} orderBy
+ * @param {string} orderBy ソート対象ヘッダ文字（このサンプルの場合 'category_name' or 'master_name'）
  * @return {number}
  */
 function desc(a, b, orderBy) {
@@ -61,8 +51,8 @@ function desc(a, b, orderBy) {
 }
 
 /**
- * @param {string} order
- * @param {string} orderBy
+ * @param {string} order 'desc' or 'asc'
+ * @param {string} orderBy ソート対象ヘッダ文字（このサンプルの場合 'category_name' or 'master_name'）
  * @return {number}
  */
 function getSorting(order, orderBy) {
@@ -72,7 +62,7 @@ function getSorting(order, orderBy) {
 }
 
 const TableSample = props => {
-  const { onRequestSort, classes, rows, order, orderBy } = props
+  const { onRequestSort, classes, columns, rows, order, orderBy } = props
 
   return (
     <div>
@@ -82,7 +72,7 @@ const TableSample = props => {
         <Table>
           <TableHead>
             <TableRow>
-              {titles.map(row => {
+              {columns.map(row => {
                 return (
                   <TableCell
                     key={row.id}
@@ -127,6 +117,7 @@ const TableSample = props => {
 TableSample.propTypes = {
   onRequestSort: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
+  columns: PropTypes.array.isRequired,
   rows: PropTypes.array.isRequired,
   order: PropTypes.string.isRequired,
   orderBy: PropTypes.string.isRequired
