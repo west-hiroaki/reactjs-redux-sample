@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
-import ToolBar from '@material-ui/core/ToolBar'
+import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import { Link } from '@reach/router'
 
@@ -20,7 +20,7 @@ const Header = props => {
 
   return (
     <AppBar position="absolute" className={classes.appBar}>
-      <ToolBar>
+      <Toolbar>
         {}
         <Typography
           className={classes.brand}
@@ -29,9 +29,9 @@ const Header = props => {
           component={Link}
           to="/"
         >
-          管理画面
+          ReactJS、Reduxサンプル
         </Typography>
-      </ToolBar>
+      </Toolbar>
     </AppBar>
   )
 }

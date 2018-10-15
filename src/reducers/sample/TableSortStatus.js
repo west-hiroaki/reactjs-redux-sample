@@ -7,7 +7,7 @@ const initialState = {
 }
 
 /**
- * ボタンサンプル用のreducer
+ * ソートTableサンプル用のreducer
  *
  * @param {Object} state State
  * @param {Object} action Action

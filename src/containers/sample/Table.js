@@ -2,10 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from '@reach/router'
 import { connect } from 'react-redux'
-import NormalTableSampleComponent from '../../components/sample/table/NormalTable'
-import SortTableSampleComponent from '../../components/sample/table/SortTable'
 import Paper from '@material-ui/core/Paper'
 
+import NormalTableSampleComponent from '../../components/sample/table/NormalTable'
+import SelectTableSampleComponent from '../../components/sample/table/SelectTable'
+import SortTableSampleComponent from '../../components/sample/table/SortTable'
+
+import { selectRow, deleteRow } from '../../actions/sample/SelectTable'
 import { changeSort } from '../../actions/sample/SortTable'
 
 /**
@@ -58,6 +61,65 @@ class TableSample extends React.Component {
   }
 
   /**
+   * Tableの一括選択・解除クリック用のコールバック関数
+   * @param {Object} event 渡されるイベント
+   */
+  async onSelectAllClick(event) {
+    if (event.target.checked) {
+      // 全チェック
+      const selectDeleteIds = this.props.rows.map(n => n.id)
+      this.props.dispatch(await selectRow(selectDeleteIds))
+      return
+    }
+
+    // 全チェック解除
+    this.props.dispatch(await selectRow([]))
+  }
+
+  /**
+   * Table行クリック用のコールバック関数
+   * @param {Object} event 渡されるイベント
+   * @param {number} id クリック対象行データのid（データを特定できる何か）
+   */
+  async onSelectRowClick(event, id) {
+    const { selectDeleteIds } = this.props
+
+    // チェック前の選択状況を取得
+    const selectedIndex = selectDeleteIds.indexOf(id)
+
+    let newSelected = []
+
+    if (selectedIndex === -1) {
+      // 未チェックの行だった場合は追加
+      newSelected = newSelected.concat(selectDeleteIds, id)
+    } else if (selectedIndex === 0) {
+      // チェックされていた場合。かつ、一番上の行の場合。0indexのみ省く
+      newSelected = newSelected.concat(selectDeleteIds.slice(1))
+    } else if (selectedIndex === selectDeleteIds.length - 1) {
+      // チェックされていた場合。かつ、一番下の行の場合。最後の行indexのみ省く
+      newSelected = newSelected.concat(selectDeleteIds.slice(0, -1))
+    } else if (selectedIndex > 0) {
+      // チェックされていた場合。かつ、中間行の場合。
+      newSelected = newSelected.concat(
+        selected.slice(0, selectedIndex),
+        selected.slice(selectedIndex + 1)
+      )
+    }
+
+    // 状態変更
+    this.props.dispatch(await selectRow(newSelected))
+  }
+
+  /**
+   * 行削除アイコンクリック用のコールバック関数
+   * @param {Object} event 渡されるイベント
+   */
+  async onRowDeleteClick(event) {
+    const { selectDeleteIds, rows } = this.props
+    this.props.dispatch(await deleteRow(selectDeleteIds, rows))
+  }
+
+  /**
    * ここで描画する
    * @return {Object} 描画対象コンポーネント
    */
@@ -66,7 +128,7 @@ class TableSample extends React.Component {
       <div>
         <Paper>
           <div>
-            Tableタグの各要素は{' '}
+            Tableタグの各要素は
             <a href="https://material-ui.com/api/table/">
               https://material-ui.com/api/table/
             </a>{' '}
@@ -90,6 +152,14 @@ class TableSample extends React.Component {
           order={this.props.order}
           orderBy={this.props.orderBy}
         />
+
+        <SelectTableSampleComponent
+          onSelectAllClick={event => this.onSelectAllClick(event)}
+          onSelectRowClick={(event, id) => this.onSelectRowClick(event, id)}
+          onRowDeleteClick={(event, id) => this.onRowDeleteClick(event, id)}
+          selectDeleteIds={this.props.selectDeleteIds}
+          rows={this.props.rows}
+        />
       </div>
     )
   }
@@ -100,43 +170,10 @@ class TableSample extends React.Component {
  * @return {Object} props Props
  */
 function mapStateToProps(state) {
-  const columns = [
-    {
-      id: 'category_name',
-      numeric: false,
-      disablePadding: false,
-      label: 'カテゴリ'
-    },
-    {
-      id: 'master_name',
-      numeric: false,
-      disablePadding: false,
-      label: 'マスタ'
-    }
-  ]
-
-  const rows = [
-    {
-      category_name: 'category1',
-      master_name: 'master1-1'
-    },
-    {
-      category_name: 'category1',
-      master_name: 'master1-2'
-    },
-    {
-      category_name: 'category2',
-      master_name: 'master2-1'
-    },
-    {
-      category_name: 'category2',
-      master_name: 'master2-2'
-    }
-  ]
-
   return {
-    columns: columns,
-    rows: rows,
+    columns: state.TableSelectStatus.columns,
+    rows: state.TableSelectStatus.rows,
+    selectDeleteIds: state.TableSelectStatus.selectDeleteIds,
     order: state.TableSortStatus.order,
     orderBy: state.TableSortStatus.orderBy
   }
@@ -146,6 +183,7 @@ TableSample.propTypes = {
   dispatch: PropTypes.func.isRequired,
   columns: PropTypes.array.isRequired,
   rows: PropTypes.array.isRequired,
+  selectDeleteIds: PropTypes.array.isRequired,
   order: PropTypes.string.isRequired,
   orderBy: PropTypes.string.isRequired
 }
