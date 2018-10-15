@@ -38,7 +38,7 @@ class ButtonSample extends React.Component {
   /**
    * ここで描画する
    * かつ、コンポーネントの `handleClickSelfMade` に関数を割り当てる
-   * @return {Object} ボタンコンポーネント
+   * @return {Object} JSX（描画対象コンポーネント）
    */
   render() {
     return (

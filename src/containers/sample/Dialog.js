@@ -28,7 +28,7 @@ class DialogSample extends React.Component {
   /**
    * ダイアログのOK、Cancel、範囲外クリック用のコールバック関数
    * @param {Object} event ボタンに渡されるイベント
-   * @param {Object} state アクション文字列
+   * @param {Object} actionState アクション文字列
    */
   async handleClose(event, actionState) {
     // メッセージ表示
@@ -56,7 +56,9 @@ class DialogSample extends React.Component {
         <DialogSampleComponent
           open={this.props.open}
           handleClickOpen={event => this.handleClickOpen(event)}
-          handleClose={(event, actionState) => this.handleClose(event, actionState)}
+          handleClose={(event, actionState) =>
+            this.handleClose(event, actionState)
+          }
         />
       </div>
     )

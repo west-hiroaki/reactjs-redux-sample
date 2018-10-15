@@ -31,7 +31,7 @@ const DialogSample = props => {
   const { classes, open, handleClickOpen, handleClose } = props
 
   return (
-    <div>
+    <div className={classes.root}>
       <Button color="primary" variant="raised" onClick={handleClickOpen}>
         ボタンを押すとダイアログ表示
       </Button>

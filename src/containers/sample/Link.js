@@ -35,7 +35,7 @@ class LinkSample extends React.Component {
 
   /**
    * ここで描画する
-   * @return {Object} 描画対象コンポーネント
+   * @return {Object} JSX（描画対象コンポーネント）
    */
   render() {
     return (
