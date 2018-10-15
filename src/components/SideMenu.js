@@ -50,6 +50,14 @@ const SideMenu = props => {
         <ListItem button key="table_sample" component={Link} to="/sample/table">
           <ListItemText primary="Table サンプル" />
         </ListItem>
+        <ListItem
+          button
+          key="dialog_sample"
+          component={Link}
+          to="/sample/dialog"
+        >
+          <ListItemText primary="Dialog サンプル" />
+        </ListItem>
       </List>
     </Drawer>
   )

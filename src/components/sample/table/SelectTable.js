@@ -57,7 +57,7 @@ let EnhancedTableToolbar = props => {
           </Typography>
         ) : (
           <Typography variant="subheading" id="tableTitle">
-            行を選択 -> 削除できるTable
+            行を選択 → 削除できるTable
           </Typography>
         )}
       </div>

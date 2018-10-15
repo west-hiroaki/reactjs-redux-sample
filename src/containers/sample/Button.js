@@ -51,10 +51,10 @@ class ButtonSample extends React.Component {
           {this.props.counter}
         </div>
         <div>
-          ボタンの各要素は{' '}
+          ボタンの各要素は
           <a href="https://material-ui.com/api/button/">
             https://material-ui.com/api/button/
-          </a>{' '}
+          </a>
           を参照
         </div>
 

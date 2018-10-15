@@ -8,6 +8,7 @@ import Home from '../components/Home'
 import SideMenu from '../components/SideMenu'
 
 import ButtonSample from './sample/Button'
+import DialogSample from './sample/Dialog'
 import LinkSample from './sample/Link'
 import MessageBar from './MessageBar'
 import SwitchSample from './sample/Switch'
@@ -40,6 +41,7 @@ const Router = props => {
           <LinkSample path="/sample/link" />
           <TableSample path="/sample/table" />
           <TableDetailSample path="/sample/table/:category/:masterName" />
+          <DialogSample path="/sample/dialog" />
         </ReachRouter>
       </main>
     </div>

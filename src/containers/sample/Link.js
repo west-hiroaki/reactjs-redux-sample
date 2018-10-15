@@ -41,10 +41,10 @@ class LinkSample extends React.Component {
     return (
       <div>
         <div>
-          Linkタグの各要素は{' '}
+          Linkタグの各要素は
           <a href="https://reach.tech/router/api/Link">
             https://reach.tech/router/api/Link
-          </a>{' '}
+          </a>
           を参照
         </div>
 

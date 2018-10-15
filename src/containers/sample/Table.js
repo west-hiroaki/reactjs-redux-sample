@@ -131,7 +131,7 @@ class TableSample extends React.Component {
             Tableタグの各要素は
             <a href="https://material-ui.com/api/table/">
               https://material-ui.com/api/table/
-            </a>{' '}
+            </a>
             を参照
           </div>
         </Paper>
