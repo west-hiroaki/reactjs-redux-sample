@@ -367,11 +367,11 @@
   }
   ```
 
-  本来、以下コマンドで追加するがとりあえずコピペ。
+  今回はバージョンを指定したいのでコピペしたが、最新にしたい場合は以下コマンドで追加する。
 
   ```shell
-  $ npm install --save react redux ..
-  $ npm install --save-dev webpack eslint ..
+  $ npm install --save @babel/plugin-proposal-object-rest-spread @babel/polyfill @material-ui/core @material-ui/icons @reach/router prop-types react react-dom react-redux redux redux-promise
+  $ npm install --save-dev @babel/core @babel/preset-env @babel/preset-react @pollyjs/core @pollyjs/node-server babel-eslint babel-loader connect-history-api-fallback dotenv eslint eslint-config-google eslint-config-prettier eslint-plugin-prettier eslint-plugin-react http-proxy-middleware jest jest-fetch-mock koa-connect prettier prettier-eslint react-hot-loader webpack webpack-cli webpack-serve
   ```
 
 ### package.json に webpack起動スクリプトを追記
