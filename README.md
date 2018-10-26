@@ -50,12 +50,18 @@
 
       `package.json` に記述されたライブラリ達が、`node_modules` ディレクトリ内にインストールされます。
 
-  3. [webpack](https://webpack.js.org/) を起動  
+  3. git hookを登録（任意）
+    .githooks ディレクトリ内に git hook ファイルが記述されているので config に登録します。
+      ```bash
+      $ git config core.hooksPath .githooks
+      ```
+
+  4. [webpack](https://webpack.js.org/) を起動  
       ```bash
       $ npm start
       ```
 
-  4. ローカルのブラウザで [`http://localhost:8888/`](http://localhost:8888/) にアクセス。  
+  5. ローカルのブラウザで [`http://localhost:8888/`](http://localhost:8888/) にアクセス。  
     ページが表示されればOK。
 
 ## ESlint実行コマンド

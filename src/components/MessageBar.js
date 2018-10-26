@@ -42,7 +42,7 @@ const MessageBar = props => {
       onClose={onClose}
     >
       <SnackbarContent
-        className={classNames(classes['error'], classes.margin)}
+        className={classNames(classes.error, classes.margin)}
         aria-describedby="client-snackbar"
         message={
           <span id="client-snackbar" className={classes.message}>

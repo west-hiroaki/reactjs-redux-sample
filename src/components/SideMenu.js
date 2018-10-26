@@ -60,20 +60,10 @@ const SideMenu = props => {
         >
           <ListItemText primary="Button サンプル" />
         </ListItem>
-        <ListItem
-          button
-          key="link_sample"
-          component={Link}
-          to="/sample/link"
-        >
+        <ListItem button key="link_sample" component={Link} to="/sample/link">
           <ListItemText primary="Link サンプル" />
         </ListItem>
-        <ListItem
-          button
-          key="table_sample"
-          component={Link}
-          to="/sample/table"
-        >
+        <ListItem button key="table_sample" component={Link} to="/sample/table">
           <ListItemText primary="Table サンプル" />
         </ListItem>
         <ListItem
@@ -90,10 +80,7 @@ const SideMenu = props => {
 
       <List component="nav">
         <ListItem button key="icons_list">
-          <a
-            target="_blank"
-            href="https://material.io/tools/icons/?style=baseline"
-          >
+          <a href="https://material.io/tools/icons/?style=baseline">
             参考 アイコン一覧
           </a>
         </ListItem>
